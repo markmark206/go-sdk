@@ -11,13 +11,14 @@ services:
           - cassandra
 
   temporal:
-    image: temporalio/auto-setup:latest
+    image: temporalio/server:latest
     ports:
       - "7233:7233"
       - "7234:7234"
       - "7235:7235"
       - "7239:7239"
     environment:
+      - "AUTO_SETUP=true"
       - "CASSANDRA_SEEDS=cassandra"
       - "DYNAMIC_CONFIG_FILE_PATH=config/dynamicconfig/development.yaml"
     depends_on:
